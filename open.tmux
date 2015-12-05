@@ -4,10 +4,10 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$CURRENT_DIR/scripts/helpers.sh"
 
-default_open_key="o"
+default_open_key="C-o"
 open_option="@open"
 
-default_open_editor_key="C-o"
+default_open_editor_key="o"
 open_editor_option="@open-editor"
 open_editor_override="@open-editor-command"
 
@@ -72,7 +72,7 @@ generate_editor_command() {
 	local editor=$(get_tmux_option "$open_editor_override" "$environment_editor")
 	# vim freezes terminal unless there's the '--' argument. Other editors seem
 	# to be fine with it (textmate [mate], light table [table]).
-	echo "xargs -I {} tmux send-keys '$editor -- \"{}\"'; tmux send-keys 'C-m'"
+	echo "xargs -I {} tmux send-keys '$editor \"{}\"'; tmux send-keys 'C-m'"
 }
 
 set_copy_mode_open_bindings() {
